@@ -18,9 +18,7 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
             .attr('height', height + 60);
 
 
-        const dates = dataset.map(function (item) {
-            return new Date(item[0]);
-        });
+        const dates = dataset.map(item => new Date(item[0]));
 
         const xMax = new Date(d3.max(dates));
         const xMin = new Date(d3.min(dates));
@@ -35,6 +33,18 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
         svg.append('g')
             .call(xAxis)
             .attr('id', 'x-axis')
-            .attr('transform', 'translate(30, 400)');
+            .attr('transform', 'translate(40, 400)');
 
-    });
+        const gdp = dataset.map(item => item[1]);
+        console.log(gdp);
+        const yMax = d3.max(gdp);
+        const yScale = d3.scaleLinear().domain([0, yMax]).range([height, 0]);
+        const yAxis = d3.axisLeft(yScale);
+        svg.append('g')
+            .call(yAxis)
+            .attr('id', 'y-axis')
+            .attr('transform', 'translate(40, 0)');
+
+        });
+
+
