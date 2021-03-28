@@ -42,6 +42,12 @@ body {
     color: mediumspringgreen;
 }
 
+@media (max-width: 800px) {
+    #chart-container {
+        border: none;
+    }
+}
+
 
 
 
